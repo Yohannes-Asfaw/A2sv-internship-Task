@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: calc(100% - 80px);
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="number"] {
+      width: 80px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #cartContents {
+      margin-top: 20px;
+    }
+
+    .cart-item {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shopping Cart</h1>
+
+    <!-- Add item input -->
+    <div class="input-group">
+      <label for="itemName">Item Name:</label>
+      <input type="text" id="itemName">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" min="1" value="1">
+      <button onclick="addItem()">Add Item</button>
+    </div>
+
+    <!-- Remove item input -->
+    <div class="input-group">
+      <label for="removeItemName">Item Name:</label>
+      <input type="text" id="removeItemName">
+      <label for="removeQuantity">Quantity:</label>
+      <input type="number" id="removeQuantity" min="1" value="1">
+      <button onclick="removeItem()">Remove Item</button>
+    </div>
+
+    <!-- Update item input -->
+    <div class="input-group">
+      <label for="updateItem">Update Item:</label>
+      <input type="text" id="updateItem">
+      <label for="newQuantity">New Quantity:</label>
+      <input type="number" id="newQuantity" min="1" value="1">
+      <button onclick="updateItem()">Update Quantity</button>
+    </div>
+
+    <!-- View and calculate buttons -->
+    <div>
+      <button onclick="viewCart()">View Cart</button>
+      <button onclick="calculateTotal()">Calculate Total</button>
+    </div>
+
+    <!-- Cart contents display -->
+    <div id="cartContents"></div>
+    <div class="total" id="total"></div>
+  </div>
+
+  <script src="task3.js"></script>
+</body>
+</html>
