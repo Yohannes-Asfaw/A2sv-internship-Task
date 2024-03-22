@@ -1,16 +1,22 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import config from '../config';
+
 interface MyRequest extends Request {
   userId?: string;
 }
+
 const verifyToken = (req: MyRequest, res: Response, next: NextFunction): void => {
-  const token = req.header('Authorization');
-  if (!token) {
+  const authHeader = req.header('Authorization');
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
     res.status(401).json({ error: 'Unauthorized - No token provided' });
     return;
   }
 
-  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+  const token = authHeader.split(' ')[1];
+
+  jwt.verify(token, config.jwtSecret, (err, decoded) => {
     if (err) {
       res.status(401).json({ error: 'Unauthorized - Invalid token' });
       return;

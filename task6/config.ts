@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-export default {
+const config = {
   jwtSecret: process.env.JWT_SECRET || 'default_secret',
 };
+
+export default config;
